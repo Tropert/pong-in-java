@@ -5,6 +5,7 @@
 package pong;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -26,7 +27,7 @@ public class GUIFrame extends JFrame{
         
         while(true)
         {
-            pause(60); //Give the processor some time- also FPS
+            pause(10); //Give the processor some time- also FPS
             p.repaint();
         }
     }
