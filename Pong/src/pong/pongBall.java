@@ -4,6 +4,9 @@
  */
 package pong;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author matt
@@ -29,13 +32,25 @@ public class pongBall {
         this.yVel = yVel;
     }
     
-    public void update()
+    public void update(int width, int height)
     {
+        if(xPos >= width - 10 || xPos <= 0)
+        {
+            xVel = -(xVel);
+        }
+        if(yPos >= height - 10 || yPos <= 0)
+        {
+            yVel = -(yVel);
+        }
         xPos += xVel;
         yPos += yVel;
     }
     
-
+    public void draw(Graphics g)
+    {
+        g.setColor(Color.WHITE);
+        g.fillOval((int)xPos, (int)yPos, (int)radius, (int)radius);
+    }
     /**
      * @return the xPos
      */

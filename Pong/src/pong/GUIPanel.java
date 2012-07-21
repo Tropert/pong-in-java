@@ -14,16 +14,22 @@ import javax.swing.JPanel;
  */
 public class GUIPanel extends JPanel{
     private pongBall ball;
+    private int height = 500;
+    private int width = 500;
     GUIPanel()
     {
         super();
-        ball = new pongBall(1, 1, 10, 10, 10);
+        ball = new pongBall(2, 1, 10, 10, 10);
+        this.setOpaque(false);
+        this.setVisible(true);
     }
     
     @Override
     protected void paintComponent(Graphics g)
     {
-        g.drawOval((int)ball.getxPos(), (int)ball.getyPos(), (int)ball.getRadius(), (int)ball.getRadius());
-        ball.update(); //Updates the x and y position
+        g.setColor(Color.black);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        ball.draw(g); //Draws the ball at the new position
+        ball.update(width, height); //Updates the x and y position
     }
 }
