@@ -17,13 +17,13 @@ public class GUIPanel extends JPanel{
     GUIPanel()
     {
         super();
-        ball = new pongBall(10, 10, 10);
+        ball = new pongBall(1, 1, 10, 10, 10);
     }
     
     @Override
-    public void paintComponent(Graphics g)
+    protected void paintComponent(Graphics g)
     {
         g.drawOval((int)ball.getxPos(), (int)ball.getyPos(), (int)ball.getRadius(), (int)ball.getRadius());
-        ball.setxPos(ball.getxPos() + 1);
+        ball.update(); //Updates the x and y position
     }
 }

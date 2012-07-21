@@ -9,20 +9,32 @@ package pong;
  * @author matt
  */
 public class pongBall {
-    private double xPos, yPos, radius;
+    private double xPos, yPos, radius; //Basic properties
+    private double xVel, yVel; //The velocity for the ball
     pongBall()
     {
         super();
         xPos = 0;
         yPos = 0;
         radius = 10;
+        xVel = 1;
+        yVel = 1;
     }
-    pongBall(double xPos, double yPos, double radius)
+    pongBall(double xVel, double yVel, double xPos, double yPos, double radius)
     {
         this.xPos = xPos;
         this.yPos = yPos;
         this.radius = radius;
+        this.xVel = xVel;
+        this.yVel = yVel;
     }
+    
+    public void update()
+    {
+        xPos += xVel;
+        yPos += yVel;
+    }
+    
 
     /**
      * @return the xPos
@@ -64,5 +76,33 @@ public class pongBall {
      */
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    /**
+     * @return the xVel
+     */
+    public double getxVel() {
+        return xVel;
+    }
+
+    /**
+     * @param xVel the xVel to set
+     */
+    public void setxVel(double xVel) {
+        this.xVel = xVel;
+    }
+
+    /**
+     * @return the yVel
+     */
+    public double getyVel() {
+        return yVel;
+    }
+
+    /**
+     * @param yVel the yVel to set
+     */
+    public void setyVel(double yVel) {
+        this.yVel = yVel;
     }
 }
