@@ -66,6 +66,24 @@ public class Paddle {
         yPos += yVel;
     }
     
+    public void computerUpdate(pongBall ball)
+    {
+        /*if(ball.getyPos() > xPos)
+        {
+            yVel = 2;
+        }
+        if(ball.getyPos() < xPos)
+        {
+            yVel = -2;
+        }
+        if(ball.getyPos() == yPos)
+        {
+            yVel = 0;
+        }
+        xPos += xVel;
+        yPos += yVel;*/
+        yPos = (int)ball.getyPos() - (length/2);
+    }
     
     /**
      * @return the xPos
