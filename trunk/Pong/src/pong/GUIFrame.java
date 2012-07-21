@@ -28,7 +28,7 @@ public class GUIFrame extends JFrame{
         {
             pause(10); //Give the processor some time- also FPS
             p.repaint();
-            p.requestFocus();
+            p.requestFocus(); //Request focus for the KeyListener
         }
     }
     public void pause(long time)
