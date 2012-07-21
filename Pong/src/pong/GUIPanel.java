@@ -16,7 +16,8 @@ import javax.swing.JPanel;
  */
 public class GUIPanel extends JPanel implements KeyListener{
     private pongBall ball;
-    private Paddle player;
+    private Paddle player; //The paddle moveable by the player
+    private Paddle computer;
     private int height = 500;
     private int width = 500;
     GUIPanel()
@@ -24,6 +25,7 @@ public class GUIPanel extends JPanel implements KeyListener{
         super();
         ball = new pongBall(2, 1, 10, 10, 10);
         player = new Paddle(20, 250, 0, 0, 50);
+        computer = new Paddle(this.width - 20, 250, 0, 0, 50);
         this.addKeyListener(this);
         this.setOpaque(false);
         this.setVisible(true);
@@ -35,6 +37,8 @@ public class GUIPanel extends JPanel implements KeyListener{
         g.setColor(Color.black);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.setColor(Color.red);
+        computer.draw(g);
+        computer.computerUpdate(ball);
         player.draw(g);
         player.update(getWidth(),getHeight());
         ball.draw(g); //Draws the ball at the new position
