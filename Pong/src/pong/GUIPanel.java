@@ -34,9 +34,12 @@ public class GUIPanel extends JPanel implements KeyListener{
     @Override
     protected void paintComponent(Graphics g)
     {
+        //Clearing the screen
         g.setColor(Color.black);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        g.setColor(Color.red);
+        g.setColor(Color.white);
+        g.drawLine(getWidth()/2, 0, getWidth()/2, getHeight());
+        g.drawOval(getWidth()/2 - 25, getHeight()/2 - 25, 50, 50);
         computer.draw(g);
         computer.computerUpdate(ball, getWidth(), getHeight());
         player.draw(g);
