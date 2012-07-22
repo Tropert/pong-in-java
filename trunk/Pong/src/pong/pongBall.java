@@ -14,6 +14,7 @@ import java.awt.Graphics;
 public class pongBall {
     private double xPos, yPos, radius; //Basic properties
     private double xVel, yVel; //The velocity for the ball
+    private int rightScore, leftScore;//The score for the other players
     pongBall()
     {
         super();
@@ -22,6 +23,8 @@ public class pongBall {
         radius = 10;
         xVel = 1;
         yVel = 1;
+        rightScore = 0;
+        leftScore = 0;
     }
     pongBall(double xVel, double yVel, double xPos, double yPos, double radius)
     {
@@ -30,15 +33,25 @@ public class pongBall {
         this.radius = radius;
         this.xVel = xVel;
         this.yVel = yVel;
+        rightScore = 0;
+        leftScore = 0;
     }
     
     public void update(int width, int height)
     {
-        if(xPos >= width - 10 || xPos <= 0)
+        if(xPos >= width || xPos <= 0)
         {
-            xVel = -(xVel);
+            if(xPos <= 0)
+            {
+                rightScore++;
+            }
+            if(xPos >= width)
+            {
+                leftScore++;
+            }
+            //xVel = -(xVel);
         }
-        if(yPos >= height - 10 || yPos <= 0)
+        if(yPos >= height || yPos <= 0)
         {
             yVel = -(yVel);
         }
@@ -119,5 +132,33 @@ public class pongBall {
      */
     public void setyVel(double yVel) {
         this.yVel = yVel;
+    }
+
+    /**
+     * @return the rightScore
+     */
+    public int getRightScore() {
+        return rightScore;
+    }
+
+    /**
+     * @param rightScore the rightScore to set
+     */
+    public void setRightScore(int rightScore) {
+        this.rightScore = rightScore;
+    }
+
+    /**
+     * @return the leftScore
+     */
+    public int getLeftScore() {
+        return leftScore;
+    }
+
+    /**
+     * @param leftScore the leftScore to set
+     */
+    public void setLeftScore(int leftScore) {
+        this.leftScore = leftScore;
     }
 }

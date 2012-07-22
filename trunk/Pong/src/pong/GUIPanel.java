@@ -37,15 +37,19 @@ public class GUIPanel extends JPanel implements KeyListener{
         //Clearing the screen
         g.setColor(Color.black);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        /////////////////////////
         g.setColor(Color.white);
+        g.drawString(ball.getLeftScore() + "", getWidth()/2 - 50, 20);
+        g.drawString(ball.getRightScore() + "", getWidth()/2 + 50, 20);
         g.drawLine(getWidth()/2, 0, getWidth()/2, getHeight());
         g.drawOval(getWidth()/2 - 25, getHeight()/2 - 25, 50, 50);
-        computer.draw(g);
+        //update and drawing
         computer.computerUpdate(ball, getWidth(), getHeight());
-        player.draw(g);
+        computer.draw(g);
         player.update(getWidth(),getHeight(), ball);
-        ball.draw(g); //Draws the ball at the new position
+        player.draw(g);
         ball.update(width, height); //Updates the x and y position; and collisions in future
+        ball.draw(g); //Draws the ball at the new position
     }
 
     @Override
