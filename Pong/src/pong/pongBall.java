@@ -37,6 +37,21 @@ public class pongBall {
         leftScore = 0;
     }
     
+    public void respawn(int width, int height, boolean ball)
+    {
+        if(ball)
+        {
+            xVel = -1;
+        }
+        else
+        {
+            xVel = 1;
+        }
+        xPos = width/2;
+        yPos = height/2;
+        yVel = 0;
+    }
+    
     public void update(int width, int height)
     {
         if(xPos >= width || xPos <= 0)
@@ -44,10 +59,12 @@ public class pongBall {
             if(xPos <= 0)
             {
                 rightScore++;
+                respawn(width, height, false);
             }
             if(xPos >= width)
             {
                 leftScore++;
+                respawn(width, height, true);
             }
             //xVel = -(xVel);
         }
