@@ -19,13 +19,13 @@ public class GUIPanel extends JPanel implements KeyListener{
     private Paddle player; //The paddle moveable by the player
     private Paddle computer;
     private int height = 500;
-    private int width = 500;
+    private int width = 700;
     GUIPanel()
     {
         super();
         ball = new pongBall(1, 0, 10, 10, 10);
         player = new Paddle(0, 200, 0, 0, 50);
-        computer = new Paddle(this.width - 10, 200, 0, 0, 50);
+        computer = new Paddle(width - 10, 200, 0, 0, 50);
         this.addKeyListener(this);
         this.setOpaque(false);
         this.setVisible(true);
@@ -44,9 +44,9 @@ public class GUIPanel extends JPanel implements KeyListener{
         g.drawLine(getWidth()/2, 0, getWidth()/2, getHeight());
         g.drawOval(getWidth()/2 - 25, getHeight()/2 - 25, 50, 50);
         //update and drawing
-        computer.computerUpdate(ball, getWidth(), getHeight());
+        computer.computerUpdate(ball, width, height);
         computer.draw(g);
-        player.update(getWidth(),getHeight(), ball);
+        player.update(width, height, ball);
         player.draw(g);
         ball.update(width, height); //Updates the x and y position; and collisions in future
         ball.draw(g); //Draws the ball at the new position

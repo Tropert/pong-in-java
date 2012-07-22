@@ -16,7 +16,7 @@ public class GUIFrame extends JFrame{
     {
         super();
         this.setTitle("Pong");
-        this.setSize(500,500);
+        this.setSize(700,500);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
