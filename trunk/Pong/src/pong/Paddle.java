@@ -11,11 +11,12 @@ import java.awt.Graphics;
  * @author matt
  */
 public class Paddle {
+
     private int xPos, yPos;
     private int xVel, yVel;
     private int length, width;
-    Paddle()
-    {
+
+    Paddle() {
         xPos = 0;
         yPos = 0;
         xVel = 0;
@@ -23,8 +24,8 @@ public class Paddle {
         length = 50;
         width = 10;
     }
-    Paddle(int xPos, int yPos, int xVel, int yVel, int length)
-    {
+
+    Paddle(int xPos, int yPos, int xVel, int yVel, int length) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.xVel = xVel;
@@ -33,61 +34,73 @@ public class Paddle {
         this.width = 10;
     }
 
-    public void draw(Graphics g)
-    {
-        g.fillRect(xPos, yPos ,width, length);
+    public void draw(Graphics g) {
+        g.fillRect(xPos, yPos, width, length);
     }
-    
-    public void update(int width, int height)
-    {
-        if(xPos <= 0 || xPos >= width - this.width) //The window width minus the paddle width
+
+    public void update(int width, int height, pongBall ball) {
+        checkCollisions(ball, width, false);
+        if (xPos <= 0 || xPos >= width - this.width) //The window width minus the paddle width
         {
-            if(xPos <= 0 && xVel < 0)
-            {
+            if (xPos <= 0 && xVel < 0) {
                 xVel = 0;
             }
-            if(xPos >= width - this.width && xVel > 0)
-            {
+            if (xPos >= width - this.width && xVel > 0) {
                 xVel = 0;
             }
         }
-        if(yPos <= 0 || yPos >= height - this.length) //The window height minus the length of the paddle
+        if (yPos <= 0 || yPos >= height - this.length) //The window height minus the length of the paddle
         {
-            if(yPos <= 0 && yVel < 0)
-            {
+            if (yPos <= 0 && yVel < 0) {
                 yVel = 0;
             }
-            if(yPos >= height - this.length && yVel > 0)
-            {
+            if (yPos >= height - this.length && yVel > 0) {
                 yVel = 0;
             }
         }
         xPos += xVel;
         yPos += yVel;
     }
-    
-    public void computerUpdate(pongBall ball)
-    {
-        if(ball.getyPos() > yPos)
-        {
+
+    public void computerUpdate(pongBall ball, int width, int height) {
+        checkCollisions(ball, width, true);
+        //Set velocities
+        if (ball.getyPos() - (this.length / 2) > yPos) {
             yVel = 1;
         }
-        if(ball.getyPos() < yPos)
-        {
+        if (ball.getyPos() - (this.length / 2) < yPos) {
             yVel = -1;
         }
-        if(ball.getyPos() == yPos)
-        {
+        if (ball.getyPos() - (this.length / 2) == yPos) {
+            yVel = 0;
+        }
+        //Check collisions with wall
+        if (yPos >= height - this.length && yVel > 0) {
+            yVel = 0;
+        }
+        if (yPos <= 0 && yVel < 0) {
             yVel = 0;
         }
         xPos += xVel;
         yPos += yVel;
-        
-        
-        
         //yPos = (int)ball.getyPos() - (length/2);
     }
-    
+    //Check collisions with ball
+
+    public void checkCollisions(pongBall ball, int width, boolean computer) {
+        if (ball.getyPos() >= yPos && ball.getyPos() <= yPos + this.getLength()) {
+            if (computer) {
+                if (ball.getxPos() >= this.xPos) {
+                    ball.setyVel(-(ball.getyVel()));
+                }
+            } else {
+                if (ball.getxPos() <= this.xPos) {
+                    ball.setyVel(-(ball.getyVel()));
+                }
+            }
+        }
+    }
+
     /**
      * @return the xPos
      */
@@ -171,6 +184,4 @@ public class Paddle {
     public void setWidth(int width) {
         this.width = width;
     }
-    
-    
 }
