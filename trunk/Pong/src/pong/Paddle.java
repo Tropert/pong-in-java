@@ -74,19 +74,41 @@ public class Paddle {
         if (ball.getyPos() - (this.length / 2) == yPos) {
             yVel = 0;
         }
+        if(ball.getyPos() - (this.length/2) == yPos)
         //Check collisions with wall
-        if (yPos >= height - this.length && yVel > 0) {
-            yVel = 0;
-        }
         if (yPos <= 0 && yVel < 0) {
             yVel = 0;
         }
         xPos += xVel;
         yPos += yVel;
-        //yPos = (int)ball.getyPos() - (length/2);
+//        yPos = (int)ball.getyPos() - (length/2);
     }
-    //Check collisions with ball
 
+    public void computerUpdate2(pongBall ball, int width, int height) {
+        checkCollisions(ball, width, false);
+//        //Set velocities
+//        if (ball.getyPos() - (this.length / 2) > yPos) {
+//            yVel = 1;
+//        }
+//        if (ball.getyPos() - (this.length / 2) < yPos) {
+//            yVel = -1;
+//        }
+//        if (ball.getyPos() - (this.length / 2) == yPos) {
+//            yVel = 0;
+//        }
+//        //Check collisions with wall
+//        if (yPos >= height - this.length && yVel > 0) {
+//            yVel = 0;
+//        }
+//        if (yPos <= 0 && yVel < 0) {
+//            yVel = 0;
+//        }
+//        xPos += xVel;
+//        yPos += yVel;
+        yPos = (int)ball.getyPos() - (length/2);
+    }
+    
+    //Check collisions with ball
     public void checkCollisions(pongBall ball, int width, boolean computer) {
         if (ball.getyPos() >= yPos && ball.getyPos() <= yPos + this.getLength()) {
             if (computer) {

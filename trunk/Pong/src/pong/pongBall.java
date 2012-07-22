@@ -41,11 +41,11 @@ public class pongBall {
     {
         if(ball)
         {
-            xVel = -1;
+            xVel = -1.5;
         }
         else
         {
-            xVel = 1;
+            xVel = 1.5;
         }
         xPos = width/2;
         yPos = height/2;
