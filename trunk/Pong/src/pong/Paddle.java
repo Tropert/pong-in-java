@@ -91,11 +91,11 @@ public class Paddle {
         if (ball.getyPos() >= yPos && ball.getyPos() <= yPos + this.getLength()) {
             if (computer) {
                 if (ball.getxPos() >= this.xPos) {
-                    ball.setyVel(-(ball.getyVel()));
+                    ball.setyVel(-(ball.getyVel()+Math.random()));
                 }
             } else {
                 if (ball.getxPos() <= this.xPos) {
-                    ball.setyVel(-(ball.getyVel()));
+                    ball.setyVel(-(ball.getyVel()+Math.random()));
                 }
             }
         }

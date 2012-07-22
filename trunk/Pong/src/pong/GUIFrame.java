@@ -39,6 +39,4 @@ public class GUIFrame extends JFrame{
             System.out.println("Error with pause: " + e);
         }
     }
-    
-    
 }
