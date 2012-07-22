@@ -23,7 +23,7 @@ public class GUIPanel extends JPanel implements KeyListener{
     GUIPanel()
     {
         super();
-        ball = new pongBall(1, 0, 10, 10, 10);
+        ball = new pongBall(Math.random()*2, 0, width/2, height/2, 10);
         player = new Paddle(0, 200, 0, 0, 50);
         computer = new Paddle(width - 15, 200, 0, 0, 50);
         this.addKeyListener(this);
