@@ -23,7 +23,7 @@ public class GUIFrame extends JFrame{
         GUIPanel p = new GUIPanel();
         this.add(p, BorderLayout.CENTER);
         this.setVisible(true);
-        
+        p.setValues(p.getWidth(), p.getHeight());
         while(true)
         {
             pause(10); //Give the processor some time- also FPS
