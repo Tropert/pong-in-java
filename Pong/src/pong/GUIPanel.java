@@ -72,4 +72,10 @@ public class GUIPanel extends JPanel implements KeyListener{
     public void keyReleased(KeyEvent ke) {
         player.setyVel(0);
     }
+    
+    public void setValues(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+    }
 }
