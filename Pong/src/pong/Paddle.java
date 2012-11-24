@@ -114,12 +114,12 @@ public class Paddle {
             if (computer) {
                 if (ball.getxPos() >= this.xPos) {
                     ball.setxVel(-(ball.getxVel()+Math.random()));
-                    ball.setyVel(-(ball.getyVel()+Math.random()));
+                    ball.setyVel(ball.getyVel()+Math.random());
                 }
             } else {
                 if (ball.getxPos() <= this.xPos + 10) {
                     ball.setxVel(-(ball.getxVel()));
-                    ball.setyVel(-(ball.getyVel()));
+                    ball.setyVel(ball.getyVel()+Math.random());
                 }
             }
         }
